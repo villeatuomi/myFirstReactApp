@@ -6,10 +6,13 @@ import Tr from './Tr';
 
 class Tbody extends Component {
   render() {
-
-    return this.props.tbody.map((item) => (
-      <Tr key={item.title} tr={item}/>
-    ));
+    return (
+    <tbody>
+    {this.props.tbody.map((item) => (
+        <Tr key={item.title} tr={item}/>
+    ))}
+    </tbody>
+    );
 
   }
 }
