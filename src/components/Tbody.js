@@ -8,8 +8,8 @@ class Tbody extends Component {
   render() {
     return (
     <tbody>
-    {this.props.tbody.map((item) => (
-        <Tr key={item.title} tr={item}/>
+    {this.props.tbody.map((item, i) => (
+        <Tr key={i} tr={item}/>
     ))}
     </tbody>
     );
