@@ -2,6 +2,7 @@
 ## WBMA, First App
 [Kissataulukko](http://users.metropolia.fi/~villeatu/periodi3/build/)
 
+[Fetching data with AJAX, Task A](http://users.metropolia.fi/~villeatu/periodi4/ajaxHttpA/)
 
 
 #
