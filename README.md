@@ -4,7 +4,7 @@
 
 [Fetching data with AJAX, Task A](http://users.metropolia.fi/~villeatu/periodi4/ajaxHttpA/)
 
-
+[Fetching data with AJAX, Task B](http://users.metropolia.fi/~villeatu/periodi4/ajaxHttpB/)
 
 
 #
