@@ -9,7 +9,7 @@ class Tr extends Component {
     return (
         <tr style={{display: 'flex', alignItems: 'center'}}>
           <td>
-            <img src={`http://media.mw.metropolia.fi/wbma/uploads/${this.props.tr.filename.slice(0,-4)}-tn160.png`} alt={'moi'}/>
+            <img src={`http://media.mw.metropolia.fi/wbma/uploads/${this.props.tr.thumbnails.w160}`} alt={'moi'}/>
           </td>
           <td>
             <h3>{this.props.tr.title}</h3>
