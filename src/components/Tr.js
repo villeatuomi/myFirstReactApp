@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 //import logo from './logo.svg';
 //import './App.css';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class Tr extends Component {
   render() {
@@ -16,7 +17,7 @@ class Tr extends Component {
             <p>{this.props.tr.description}</p>
           </td>
           <td style={{margin: '0 50px'}}>
-            <a href={`http://media.mw.metropolia.fi/wbma/uploads/${this.props.tr.filename}`}>View</a>
+            <Link to={`/single/${this.props.tr.file_id}`}>View</Link>
           </td>
         </tr>
     );

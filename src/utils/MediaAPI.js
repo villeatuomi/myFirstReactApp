@@ -1,7 +1,6 @@
-
 const apiUrl = 'http://media.mw.metropolia.fi/wbma/media/';
 
-const  getAllMedia = () => {
+const getAllMedia = () => {
   return fetch(apiUrl).then(response => {
     return response.json();
   }).then(json => {
@@ -17,4 +16,14 @@ const  getAllMedia = () => {
   });
 };
 
-  export {getAllMedia};
+const getSingleMedia = (id) => {
+  return fetch(`${apiUrl}${id}`).then(response => {
+    return response.json();
+  }).then(json => {
+    console.log(json);
+    return json;
+  });
+};
+
+export {getAllMedia};
+export {getSingleMedia};

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import {getSingleMedia} from '../utils/MediaAPI';
 
 class Single extends Component {
   mediaUrl = 'http://media.mw.metropolia.fi/wbma/uploads/';
@@ -9,6 +10,14 @@ class Single extends Component {
       title: 'Test',
     },
   };
+
+  componentDidMount() {
+    const {id} = this.props.match.params;
+    getSingleMedia(id).then(pic => {
+      console.log(pic);
+      this.setState({file: pic});
+    });
+  }
 
   render() {
     return (
