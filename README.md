@@ -6,6 +6,7 @@
 
 [Fetching data with AJAX, Task B](http://users.metropolia.fi/~villeatu/periodi4/ajaxHttpB/)
 
+[AJAX, Routing](http://users.metropolia.fi/~villeatu/periodi4/routing/)
 
 #
 ##
