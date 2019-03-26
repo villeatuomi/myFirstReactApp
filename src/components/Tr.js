@@ -17,7 +17,7 @@ class Tr extends Component {
             <p>{this.props.tr.description}</p>
           </td>
           <td style={{margin: '0 50px'}}>
-            <Link to={`./single/${this.props.tr.file_id}`}>View</Link>
+            <Link to={`${process.env.PUBLIC_URL}/single/${this.props.tr.file_id}`}>View</Link>
           </td>
         </tr>
     );
