@@ -26,7 +26,7 @@ class App extends Component {
         <Router basename={'/~villeatu/periodi4/routing'}>
           <div className="App">
             <Nav/>
-            <Route exact path={`$/`} render={(props) => (
+            <Route exact path={`/`} render={(props) => (
                 <Home picArray={this.state.picArray}/>
             )}/>
             <Route path={`/profile`} component={Profile}/>
