@@ -23,14 +23,14 @@ class App extends Component {
   render() {
 
     return (
-        <Router basename={'.'}>
+        <Router basename={'/~villeatu/periodi4/routing'}>
           <div className="App">
             <Nav/>
-            <Route exact path={`${process.env.PUBLIC_URL}/`} render={(props) => (
+            <Route exact path={`$/`} render={(props) => (
                 <Home picArray={this.state.picArray}/>
             )}/>
-            <Route path={`${process.env.PUBLIC_URL}/profile`} component={Profile}/>
-            <Route path={`${process.env.PUBLIC_URL}/single/:id`} component={Single}/>
+            <Route path={`/profile`} component={Profile}/>
+            <Route path={`/single/:id`} component={Single}/>
           </div>
         </Router>
     );

@@ -6,10 +6,10 @@ const Nav = () => {
       <nav>
         <ul>
           <li>
-            <Link to={`${process.env.PUBLIC_URL}/`}>Home</Link>
+            <Link to={`/`}>Home</Link>
           </li>
           <li>
-            <Link to={`${process.env.PUBLIC_URL}/profile`}>Profile</Link>
+            <Link to={`/profile`}>Profile</Link>
           </li>
         </ul>
       </nav>
