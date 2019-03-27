@@ -7,6 +7,7 @@ import Nav from './components/Nav';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Profile from './views/Profile';
 import Single from './views/Single';
+import Login from './views/Login';
 
 class App extends Component {
 
@@ -26,6 +27,7 @@ class App extends Component {
         <Router basename={'/~villeatu/periodi4/routing'}>
           <div className="App">
             <Nav/>
+            <Login/>
             <Route exact path={`/`} render={(props) => (
                 <Home picArray={this.state.picArray}/>
             )}/>
