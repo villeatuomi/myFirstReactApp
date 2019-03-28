@@ -13,7 +13,13 @@ class App extends Component {
 
   state = {
     picArray: [],
+    user: {}
   };
+
+  setUser = (user) => {
+    this.setState({user: user})
+  };
+
 
   componentDidMount() {
     getAllMedia().then(pics => {
@@ -24,14 +30,20 @@ class App extends Component {
   render() {
 
     return (
-        <Router basename={'/~villeatu/periodi4/routing'}>
+        <Router basename={'/~villeatu/periodi4/login'}>
           <div className="App">
             <Nav/>
-            <Login/>
+
             <Route exact path={`/`} render={(props) => (
+                <Login {...props} setUser={this.setUser}/>
+                //<Home picArray={this.state.picArray}/>
+            )}/>
+            <Route path={`/home`} render={(props) => (
                 <Home picArray={this.state.picArray}/>
             )}/>
-            <Route path={`/profile`} component={Profile}/>
+            <Route path={`/profile`} render={(props) => (
+                <Profile {...props} user={this.state.user}/>
+            )}/>
             <Route path={`/single/:id`} component={Single}/>
           </div>
         </Router>
