@@ -1,25 +1,28 @@
 import React, {Component} from 'react';
-//import logo from './logo.svg';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import './App.css';
-import Home from './views/Home';
 import {getAllMedia} from './utils/MediaAPI';
 import Nav from './components/Nav';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import Home from './views/Home';
+import Login from './views/Login';
+import Logout from './views/Logout';
 import Profile from './views/Profile';
 import Single from './views/Single';
-import Login from './views/Login';
 
 class App extends Component {
 
   state = {
     picArray: [],
-    user: {}
+    user: null,
   };
 
   setUser = (user) => {
-    this.setState({user: user})
+    this.setState({user: user});
   };
 
+  checkLogin = () => {
+    return this.state.user !== null;
+  };
 
   componentDidMount() {
     getAllMedia().then(pics => {
@@ -32,7 +35,7 @@ class App extends Component {
     return (
         <Router basename={'/~villeatu/periodi4/login'}>
           <div className="App">
-            <Nav/>
+            <Nav checkLogin={this.checkLogin}/>
 
             <Route exact path={`/`} render={(props) => (
                 <Login {...props} setUser={this.setUser}/>
@@ -45,6 +48,11 @@ class App extends Component {
                 <Profile {...props} user={this.state.user}/>
             )}/>
             <Route path={`/single/:id`} component={Single}/>
+
+            <Route path="/logout" render={(props) => (
+                <Logout {...props} setUser={this.setUser}/>
+            )}/>
+
           </div>
         </Router>
     );

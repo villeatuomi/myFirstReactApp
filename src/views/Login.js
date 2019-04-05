@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {login} from '../utils/MediaAPI';
+import {login, register} from '../utils/MediaAPI';
 
 class Login extends Component {
   state = {
@@ -9,6 +9,32 @@ class Login extends Component {
     email: '',
     full_name: '',
   };
+
+  //
+  handleLoginSubmit = (evt) => {
+    evt.preventDefault();
+    this.doLogin();
+  };
+
+  //
+  handleRegisterSubmit = (evt) => {
+    evt.preventDefault();
+    register(this.state).then(user => {
+      console.log(user);
+      this.doLogin();
+    });
+  };
+
+  //
+  doLogin = () => {
+    login(this.state.username, this.state.password).then(response => {
+      console.log(response);
+      this.props.setUser(response.user);
+      localStorage.setItem('token', response.token);
+      this.props.history.push('/home');
+    });
+  };
+
 
   handleInputChange = (evt) => {
     const target = evt.target;
@@ -22,30 +48,12 @@ class Login extends Component {
     });
   };
 
-  formSubmit = (evt) => {
-    evt.preventDefault();
-    console.log('Moi teille kaikille.');
-    login(this.state.username, this.state.password).then(json => {
-      console.log(json);
-      const {token, user} = json;
-      console.log(token);
-      console.log(user);
-      localStorage.setItem('token', token);
-
-      // Tässä lähetetään App.js:ään user-objekti
-      this.props.setUser(user);
-
-      this.props.history.push('/home');
-
-
-    });
-  };
 
   render() {
     return (
         <React.Fragment>
           <h1>Moi</h1>
-          <form onSubmit={this.formSubmit}>
+          <form onSubmit={this.handleLoginSubmit}>
             <fieldset>
               <input type="text" name="username" placeholder="username"
                      value={this.state.username}
@@ -56,7 +64,7 @@ class Login extends Component {
               <input type="submit"/>
             </fieldset>
           </form>
-          <form onSubmit={this.formSubmit}>
+          <form onSubmit={this.handleRegisterSubmit}>
             <fieldset>
               <input type="text" name="username" placeholder="username"
                      value={this.state.username}

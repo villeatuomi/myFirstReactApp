@@ -1,13 +1,12 @@
-const apiUrl = 'http://media.mw.metropolia.fi/wbma/media/';
-const loginUrl = 'http://media.mw.metropolia.fi/wbma/login';
+const apiUrl = 'http://media.mw.metropolia.fi/wbma/';
 
 const getAllMedia = () => {
-  return fetch(apiUrl).then(response => {
+  return fetch(apiUrl + 'media/').then(response => {
     return response.json();
   }).then(json => {
     console.log(json);
     return Promise.all(json.map(pic => {
-      return fetch(apiUrl + pic.file_id).then(response => {
+      return fetch(apiUrl + 'media/' + pic.file_id).then(response => {
         return response.json();
       });
     })).then(pics => {
@@ -18,7 +17,7 @@ const getAllMedia = () => {
 };
 
 const getSingleMedia = (id) => {
-  return fetch(`${apiUrl}${id}`).then(response => {
+  return fetch(`${apiUrl}media/${id}`).then(response => {
     return response.json();
   }).then(json => {
     console.log(json);
@@ -26,37 +25,61 @@ const getSingleMedia = (id) => {
   });
 };
 
-const register = () => {
-};
 
 const login = (username, password) => {
-  const data = {
-    'username': username,
-    'password': password,
-  };
-  return fetch(`${loginUrl}`, {
+  const settings = {
     method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(data),
-  }).then(response => {
-  return response.json();
-  }).then(json => {
-    return json;
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({username, password}),
+  };
+  return fetch(apiUrl + 'login', settings).then(response => {
+    return response.json();
   });
 };
 
-const isUserLoggedIn = () => {
+//
+const register = (user) => {
+  const settings = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(user),
+  };
+  return fetch(apiUrl + 'users', settings).then(response => {
+    return response.json();
+  });
+};
 
-  return fetch()
+
+const getUser = (token) => {
+  const settings = {
+    headers: {
+      'x-access-token': token,
+    }
+  };
+  return fetch(apiUrl + 'users/user', settings).then(response => {
+    return response.json();
+  });
+}
+
+
+/*
+const isUserLoggedIn = () => {
 
 };
 
 
 const checkIfUserNameExists = () => {
+
 };
+*/
 
 export {getAllMedia};
 export {getSingleMedia};
 export {register};
 export {login};
-export {checkIfUserNameExists};
+//export {checkIfUserNameExists};
+export {getUser};

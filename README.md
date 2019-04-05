@@ -8,6 +8,8 @@
 
 [AJAX, Routing](http://users.metropolia.fi/~villeatu/periodi4/routing/)
 
+[Login, Register](http://users.metropolia.fi/~villeatu/periodi4/login/)
+
 #
 ##
 #
