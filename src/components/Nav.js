@@ -8,34 +8,34 @@ const Nav = (props) => {
   return (
       <nav>
         <List>
-          <ListItem component={Link} to='/home'>
+          <ListItem button component={Link} to='/home'>
             <ListItemIcon>
               <Home/>
             </ListItemIcon>
-            <ListItemText>Home</ListItemText>
+            <ListItemText primary="Home"/>
           </ListItem>
           {props.checkLogin() &&
           <React.Fragment>
-            <ListItem component={Link} to='/profile'>
+            <ListItem button component={Link} to='/profile'>
               <ListItemIcon>
                 <AccountBox/>
               </ListItemIcon>
-              <ListItemText>Profile</ListItemText>
+              <ListItemText primary="Profile"/>
             </ListItem>
-            <ListItem component={Link} to='/logout'>
+            <ListItem button component={Link} to='/logout'>
               <ListItemIcon>
                 <Input/>
               </ListItemIcon>
-              <ListItemText>Logout</ListItemText>
+              <ListItemText primary="Logout"/>
             </ListItem>
           </React.Fragment>
           }
           {!props.checkLogin() &&
-          <ListItem component={Link} to='/'>
+          <ListItem button component={Link} to='/'>
             <ListItemIcon>
               <VpnKey/>
             </ListItemIcon>
-            <ListItemText>Login</ListItemText>
+            <ListItemText primary="Login"/>
           </ListItem>
 
           }

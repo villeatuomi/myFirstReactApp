@@ -63,14 +63,34 @@ const getUser = (token) => {
   return fetch(apiUrl + 'users/user', settings).then(response => {
     return response.json();
   });
-}
+};
+
+
+
+
+
+
+const checkUser = (username) => {
+  return fetch(apiUrl + 'users/username/' + username).then(response => {
+    return response.json();
+  });
+};
+
+const getFilesByTag = (tag) => {
+  return fetch(apiUrl + 'tags/' + tag).then(response => {
+    return response.json();
+  });
+};
+
+
+
+
 
 
 /*
 const isUserLoggedIn = () => {
 
 };
-
 
 const checkIfUserNameExists = () => {
 
@@ -83,3 +103,5 @@ export {register};
 export {login};
 //export {checkIfUserNameExists};
 export {getUser};
+export {checkUser};
+export {getFilesByTag};
